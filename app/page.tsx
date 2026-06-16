@@ -27,29 +27,31 @@ export default function Home() {
   }
 
   return (
-    <main style={{ background: '#0f0f0f', minHeight: '100vh', color: '#f0ede8', fontFamily: 'Georgia, serif' }}>
+    <main style={{ background: '#fff', minHeight: '100vh', fontFamily: 'system-ui, sans-serif' }}>
 
       {/* Navigatie */}
-      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1.25rem 2.5rem', borderBottom: '1px solid #1e1e1e' }}>
-        <span style={{ fontSize: '1.2rem', fontWeight: 'bold', letterSpacing: '0.05em', color: '#f0ede8' }}>
-          🔥 Forum
-        </span>
-        <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
+      <nav style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '1rem 2rem', borderBottom: '0.5px solid #ede8f5', background: '#fff' }}>
+        <div style={{ fontSize: '1.1rem', fontWeight: '500', color: '#3d2d7a', display: 'flex', alignItems: 'center', gap: '8px' }}>
+          🎂 Bijnajarig
+        </div>
+        <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
           {email ? (
             <>
-              <span style={{ fontSize: '0.85rem', color: '#888' }}>{email}</span>
+              <span style={{ fontSize: '0.85rem', color: '#9b8fd4' }}>{email}</span>
               <button
                 onClick={handleUitloggen}
-                style={{ background: 'transparent', border: '1px solid #444', color: '#f0ede8', padding: '0.4rem 1rem', borderRadius: '4px', cursor: 'pointer', fontSize: '0.85rem' }}
+                style={{ background: 'transparent', border: '0.5px solid #c9bee8', color: '#3d2d7a', padding: '0.35rem 0.9rem', borderRadius: '8px', fontSize: '0.85rem', cursor: 'pointer' }}
               >
                 Uitloggen
               </button>
             </>
           ) : (
             <>
-              <Link href="/inloggen" style={{ color: '#f0ede8', textDecoration: 'none', fontSize: '0.9rem' }}>Inloggen</Link>
-              <Link href="/registreren" style={{ background: '#e07b2a', color: '#fff', padding: '0.4rem 1.1rem', borderRadius: '4px', textDecoration: 'none', fontSize: '0.9rem' }}>
-                Registreren
+              <Link href="/inloggen" style={{ background: 'transparent', border: '0.5px solid #c9bee8', color: '#3d2d7a', padding: '0.35rem 0.9rem', borderRadius: '8px', fontSize: '0.85rem', textDecoration: 'none' }}>
+                Inloggen
+              </Link>
+              <Link href="/registreren" style={{ background: '#7F77DD', color: '#fff', padding: '0.35rem 0.9rem', borderRadius: '8px', fontSize: '0.85rem', textDecoration: 'none' }}>
+                Maak een lijstje
               </Link>
             </>
           )}
@@ -57,62 +59,88 @@ export default function Home() {
       </nav>
 
       {/* Hero */}
-      <section style={{ maxWidth: '720px', margin: '0 auto', padding: '6rem 2rem 4rem', textAlign: 'center' }}>
-        <p style={{ fontSize: '0.8rem', letterSpacing: '0.2em', textTransform: 'uppercase', color: '#e07b2a', marginBottom: '1.5rem' }}>
-          Gemeenschap · Gesprek · Ideeën
+      <section style={{ maxWidth: '680px', margin: '0 auto', padding: '3.5rem 2rem 2.5rem' }}>
+        <p style={{ fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9b8fd4', marginBottom: '1.25rem' }}>
+          Gratis · Simpel · Deelbaar
         </p>
-        <h1 style={{ fontSize: 'clamp(2.5rem, 6vw, 4.5rem)', fontWeight: 'bold', lineHeight: 1.1, marginBottom: '1.5rem', color: '#f0ede8' }}>
-          Waar goede<br />
-          <span style={{ color: '#e07b2a' }}>gesprekken</span><br />
-          beginnen
+        <h1 style={{ fontSize: 'clamp(2rem, 5vw, 2.6rem)', fontWeight: '500', lineHeight: '1.15', color: '#1a1230', marginBottom: '1rem' }}>
+          Jouw verlanglijstje,{' '}
+          <span style={{ color: '#7F77DD' }}>klaar voor je verjaardag</span>
         </h1>
-        <p style={{ fontSize: '1.1rem', color: '#999', lineHeight: 1.7, marginBottom: '2.5rem', fontFamily: 'system-ui, sans-serif' }}>
-          Stel vragen, deel ideeën en praat mee over onderwerpen die jou bezighouden. Altijd respectvol, altijd open.
+        <p style={{ fontSize: '1rem', color: '#6b6080', lineHeight: '1.7', marginBottom: '2rem', maxWidth: '460px' }}>
+          Zet alles op je lijstje wat je graag wil. Deel het met vrienden en familie. Zij zien wat er nog te pakken is — jij wordt gewoon verrast.
         </p>
 
-        {email ? (
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/forum" style={{ background: '#e07b2a', color: '#fff', padding: '0.85rem 2rem', borderRadius: '6px', textDecoration: 'none', fontSize: '1rem', fontFamily: 'system-ui, sans-serif' }}>
-              Naar het forum →
+        <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap', marginBottom: '2.5rem' }}>
+          {email ? (
+            <Link href="/lijstjes" style={{ background: '#7F77DD', color: '#fff', padding: '0.75rem 1.75rem', borderRadius: '8px', fontSize: '0.95rem', textDecoration: 'none' }}>
+              Naar mijn lijstjes →
             </Link>
+          ) : (
+            <>
+              <Link href="/registreren" style={{ background: '#7F77DD', color: '#fff', padding: '0.75rem 1.75rem', borderRadius: '8px', fontSize: '0.95rem', textDecoration: 'none' }}>
+                Maak jouw lijstje →
+              </Link>
+              <Link href="/inloggen" style={{ background: '#f5f2ff', color: '#534AB7', padding: '0.75rem 1.75rem', borderRadius: '8px', fontSize: '0.95rem', textDecoration: 'none', border: '0.5px solid #c9bee8' }}>
+                Inloggen
+              </Link>
+            </>
+          )}
+        </div>
+
+        {/* Voorbeeld lijstje */}
+        <div style={{ background: '#f9f7ff', borderRadius: '12px', padding: '1.25rem', border: '0.5px solid #ede8f5' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1rem' }}>
+            <span style={{ fontSize: '0.9rem', fontWeight: '500', color: '#1a1230' }}>🎁 Verjaardag Lisa — 14 april</span>
+            <span style={{ fontSize: '0.7rem', background: '#EEEDFE', color: '#534AB7', padding: '3px 10px', borderRadius: '99px' }}>3 van 5 over</span>
           </div>
-        ) : (
-          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/registreren" style={{ background: '#e07b2a', color: '#fff', padding: '0.85rem 2rem', borderRadius: '6px', textDecoration: 'none', fontSize: '1rem', fontFamily: 'system-ui, sans-serif' }}>
-              Begin mee te praten →
-            </Link>
-            <Link href="/inloggen" style={{ background: 'transparent', color: '#f0ede8', padding: '0.85rem 2rem', borderRadius: '6px', textDecoration: 'none', fontSize: '1rem', border: '1px solid #333', fontFamily: 'system-ui, sans-serif' }}>
-              Inloggen
-            </Link>
-          </div>
-        )}
+          {[
+            { naam: 'Draadloze koptelefoon', prijs: '€89', gedaan: true },
+            { naam: 'Atomic Habits', prijs: '€18', gedaan: false },
+            { naam: 'Kamerplant naar keuze', prijs: '€25', gedaan: true },
+            { naam: 'Trui maat M, liefst groen', prijs: '€45', gedaan: false },
+          ].map((item, i) => (
+            <div key={i} style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '0.65rem 0', borderBottom: i < 3 ? '0.5px solid #ede8f5' : 'none' }}>
+              <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: '#EEEDFE', flexShrink: 0 }} />
+              <span style={{ fontSize: '0.85rem', color: '#1a1230', flex: 1 }}>{item.naam}</span>
+              <span style={{ fontSize: '0.8rem', color: '#9b8fd4' }}>{item.prijs}</span>
+              <div style={{ width: '18px', height: '18px', borderRadius: '50%', background: item.gedaan ? '#7F77DD' : '#fff', border: item.gedaan ? 'none' : '0.5px solid #c9bee8', flexShrink: 0, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                {item.gedaan && <span style={{ color: '#fff', fontSize: '10px' }}>✓</span>}
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Voorbeeldberichten */}
-      <section style={{ maxWidth: '720px', margin: '0 auto', padding: '2rem 2rem 6rem' }}>
-        <p style={{ fontSize: '0.75rem', letterSpacing: '0.15em', textTransform: 'uppercase', color: '#555', marginBottom: '1.5rem', fontFamily: 'system-ui, sans-serif' }}>
-          Recente gesprekken
+      {/* Zo werkt het */}
+      <div style={{ height: '0.5px', background: '#ede8f5', maxWidth: '680px', margin: '0 auto' }} />
+      <section style={{ maxWidth: '680px', margin: '0 auto', padding: '2.5rem 2rem' }}>
+        <p style={{ fontSize: '0.75rem', letterSpacing: '0.12em', textTransform: 'uppercase', color: '#9b8fd4', marginBottom: '1.5rem' }}>
+          Zo werkt het
         </p>
-        {[
-          { naam: 'Sara', tijd: '2 min geleden', bericht: 'Wat zijn goede tips om te beginnen met programmeren in 2025?', reacties: 12 },
-          { naam: 'Thomas', tijd: '18 min geleden', bericht: 'Heeft iemand ervaring met Next.js en Supabase combineren?', reacties: 7 },
-          { naam: 'Lena', tijd: '1 uur geleden', bericht: 'Ik zoek een goede podcast over technologie en maatschappij.', reacties: 23 },
-        ].map((post, i) => (
-          <div key={i} style={{ borderTop: '1px solid #1e1e1e', padding: '1.25rem 0', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', gap: '1rem' }}>
-            <div>
-              <div style={{ display: 'flex', gap: '0.75rem', alignItems: 'center', marginBottom: '0.5rem' }}>
-                <div style={{ width: '28px', height: '28px', borderRadius: '50%', background: '#e07b2a22', display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '0.75rem', color: '#e07b2a', fontFamily: 'system-ui' }}>
-                  {post.naam[0]}
-                </div>
-                <span style={{ fontSize: '0.8rem', color: '#666', fontFamily: 'system-ui, sans-serif' }}>{post.naam} · {post.tijd}</span>
-              </div>
-              <p style={{ fontSize: '0.95rem', color: '#ccc', lineHeight: 1.5, fontFamily: 'system-ui, sans-serif' }}>{post.bericht}</p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '12px' }}>
+          {[
+            { num: '1', titel: 'Maak een lijstje', omschrijving: 'Voeg items toe met naam, prijs en een link.' },
+            { num: '2', titel: 'Deel de link', omschrijving: 'Stuur je lijstje naar familie en vrienden.' },
+            { num: '3', titel: 'Word verrast', omschrijving: 'Zij vinken af wat ze kopen — jij ziet het niet.' },
+          ].map((stap, i) => (
+            <div key={i} style={{ background: '#f9f7ff', borderRadius: '12px', padding: '1.25rem', border: '0.5px solid #ede8f5' }}>
+              <div style={{ fontSize: '1.4rem', fontWeight: '500', color: '#c9bee8', marginBottom: '0.5rem' }}>{stap.num}</div>
+              <div style={{ fontSize: '0.85rem', fontWeight: '500', color: '#1a1230', marginBottom: '0.3rem' }}>{stap.titel}</div>
+              <div style={{ fontSize: '0.8rem', color: '#6b6080', lineHeight: '1.5' }}>{stap.omschrijving}</div>
             </div>
-            <span style={{ fontSize: '0.75rem', color: '#555', whiteSpace: 'nowrap', fontFamily: 'system-ui, sans-serif', marginTop: '0.25rem' }}>
-              💬 {post.reacties}
-            </span>
-          </div>
-        ))}
+          ))}
+        </div>
+      </section>
+
+      {/* Onderkant */}
+      <section style={{ maxWidth: '680px', margin: '0 auto', padding: '1.5rem 2rem', background: '#f9f7ff', borderTop: '0.5px solid #ede8f5', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem' }}>
+        <p style={{ fontSize: '0.9rem', color: '#1a1230' }}>
+          Al <span style={{ color: '#7F77DD', fontWeight: '500' }}>1.243 lijstjes</span> aangemaakt deze maand
+        </p>
+        <Link href="/registreren" style={{ background: '#7F77DD', color: '#fff', padding: '0.5rem 1.25rem', borderRadius: '8px', fontSize: '0.85rem', textDecoration: 'none' }}>
+          Begin nu gratis →
+        </Link>
       </section>
 
     </main>
