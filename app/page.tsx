@@ -6,14 +6,14 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 export default function Home() {
-  const [gebruiker, setGebruiker] = useState(null)
+  const [gebruiker, setGebruiker] = useState(undefined)
   const supabase = createClient()
   const router = useRouter()
 
   useEffect(() => {
     async function haalGebruikerOp() {
       const { data: { user } } = await supabase.auth.getUser()
-      setGebruiker(user)
+      setGebruiker(user ?? null)
     }
     haalGebruikerOp()
   }, [])
@@ -23,6 +23,8 @@ export default function Home() {
     setGebruiker(null)
     router.refresh()
   }
+
+  if (gebruiker === undefined) return null
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-8">
