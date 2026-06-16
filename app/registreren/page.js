@@ -2,7 +2,6 @@
 
 import { useState } from 'react'
 import { createClient } from '@/utils/supabase'
-import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
 export default function Registreren() {
@@ -11,7 +10,7 @@ export default function Registreren() {
   const [naam, setNaam] = useState('')
   const [fout, setFout] = useState(null)
   const [laden, setLaden] = useState(false)
-  const router = useRouter()
+  const [verstuurd, setVerstuurd] = useState(false)
   const supabase = createClient()
 
   async function handleRegistreren(e) {
@@ -29,7 +28,7 @@ export default function Registreren() {
     if (error) {
       setFout(error.message)
     } else {
-      router.push('/')
+      setVerstuurd(true)
     }
   }
 
@@ -119,95 +118,128 @@ export default function Registreren() {
           ))}
         </div>
 
-        {/* RECHTERKANT — formulier */}
+        {/* RECHTERKANT — formulier of bevestiging */}
         <div style={{ background: '#F4F2FF', padding: '3rem 2.5rem', display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
           <div style={{ maxWidth: 380, width: '100%', margin: '0 auto' }}>
 
-            <h1 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#2D2060', marginBottom: '0.35rem' }}>
-              Account aanmaken
-            </h1>
-            <p style={{ fontSize: '0.82rem', color: '#6B6490', marginBottom: '2rem' }}>
-              Al een account?{' '}
-              <Link href="/inloggen" style={{ color: '#7F77DD', textDecoration: 'none', fontWeight: 600 }}>Inloggen</Link>
-            </p>
-
-            <form onSubmit={handleRegistreren}>
-
-              {/* E-mail */}
-              <div className="bj-field" style={{ marginBottom: '1.1rem', position: 'relative' }}>
-                <label style={{ display: 'block', fontSize: '0.73rem', fontWeight: 600, color: '#6B6490', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                  E-mailadres
-                </label>
-                <span style={{ position: 'absolute', left: '0.9rem', top: '2.4rem', color: '#BDB8D8', fontSize: 15, pointerEvents: 'none' }}>✉</span>
-                <input
-                  type="email"
-                  placeholder="jouw@email.nl"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                />
-              </div>
-
-              {/* Wachtwoord */}
-              <div className="bj-field" style={{ marginBottom: '1.1rem', position: 'relative' }}>
-                <label style={{ display: 'block', fontSize: '0.73rem', fontWeight: 600, color: '#6B6490', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                  Wachtwoord
-                </label>
-                <span style={{ position: 'absolute', left: '0.9rem', top: '2.4rem', color: '#BDB8D8', fontSize: 15, pointerEvents: 'none' }}>🔒</span>
-                <input
-                  type="password"
-                  placeholder="Minimaal 8 tekens"
-                  value={wachtwoord}
-                  onChange={(e) => setWachtwoord(e.target.value)}
-                  required
-                />
-              </div>
-
-              {/* Naam */}
-              <div className="bj-field" style={{ marginBottom: '1.1rem', position: 'relative' }}>
-                <label style={{ display: 'block', fontSize: '0.73rem', fontWeight: 600, color: '#6B6490', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
-                  Naam{' '}
-                  <span style={{ fontWeight: 400, textTransform: 'none', fontSize: '0.72rem', color: '#BDB8D8' }}>(optioneel)</span>
-                </label>
-                <span style={{ position: 'absolute', left: '0.9rem', top: '2.4rem', color: '#BDB8D8', fontSize: 15, pointerEvents: 'none' }}>👤</span>
-                <input
-                  type="text"
-                  placeholder="Hoe mogen we je noemen?"
-                  value={naam}
-                  onChange={(e) => setNaam(e.target.value)}
-                />
-              </div>
-
-              {fout && (
-                <p style={{ fontSize: '0.82rem', color: '#A32D2D', background: '#FCEBEB', border: '1px solid #F09595', borderRadius: 10, padding: '0.6rem 0.9rem', marginBottom: '1rem' }}>
-                  {fout}
+            {verstuurd ? (
+              /* BEVESTIGINGSMELDING */
+              <div style={{ textAlign: 'center', padding: '1rem 0' }}>
+                <div style={{ fontSize: '3rem', marginBottom: '1.25rem' }}>📬</div>
+                <h2 style={{ fontSize: '1.3rem', fontWeight: 700, color: '#2D2060', marginBottom: '0.75rem' }}>
+                  Check je inbox!
+                </h2>
+                <p style={{ fontSize: '0.88rem', color: '#6B6490', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+                  We hebben een bevestigingsmail gestuurd naar{' '}
+                  <strong style={{ color: '#2D2060' }}>{email}</strong>.
+                  Klik op de link in de mail om je account te activeren.
                 </p>
-              )}
+                <p style={{ fontSize: '0.78rem', color: '#9B90C4', lineHeight: 1.6, marginBottom: '2rem' }}>
+                  Geen mail ontvangen? Controleer je spammap of{' '}
+                  <button
+                    onClick={() => setVerstuurd(false)}
+                    style={{ background: 'none', border: 'none', color: '#7F77DD', fontWeight: 600, cursor: 'pointer', fontSize: '0.78rem', fontFamily: 'inherit', padding: 0 }}
+                  >
+                    probeer opnieuw
+                  </button>.
+                </p>
+                <Link
+                  href="/inloggen"
+                  style={{ display: 'inline-block', background: '#E8A020', color: '#fff', padding: '0.75rem 2rem', borderRadius: 99, fontSize: '0.9rem', fontWeight: 600, textDecoration: 'none' }}
+                >
+                  Naar inloggen →
+                </Link>
+              </div>
+            ) : (
+              /* REGISTRATIEFORMULIER */
+              <>
+                <h1 style={{ fontSize: '1.4rem', fontWeight: 700, color: '#2D2060', marginBottom: '0.35rem' }}>
+                  Account aanmaken
+                </h1>
+                <p style={{ fontSize: '0.82rem', color: '#6B6490', marginBottom: '2rem' }}>
+                  Al een account?{' '}
+                  <Link href="/inloggen" style={{ color: '#7F77DD', textDecoration: 'none', fontWeight: 600 }}>Inloggen</Link>
+                </p>
 
-              <button type="submit" className="bj-btn-submit" disabled={laden}>
-                {laden ? 'Even geduld...' : 'Account aanmaken →'}
-              </button>
+                <form onSubmit={handleRegistreren}>
 
-            </form>
+                  {/* E-mail */}
+                  <div className="bj-field" style={{ marginBottom: '1.1rem', position: 'relative' }}>
+                    <label style={{ display: 'block', fontSize: '0.73rem', fontWeight: 600, color: '#6B6490', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                      E-mailadres
+                    </label>
+                    <span style={{ position: 'absolute', left: '0.9rem', top: '2.4rem', color: '#BDB8D8', fontSize: 15, pointerEvents: 'none' }}>✉</span>
+                    <input
+                      type="email"
+                      placeholder="jouw@email.nl"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      required
+                    />
+                  </div>
 
-            {/* Divider */}
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.25rem 0' }}>
-              <div style={{ flex: 1, height: 1, background: '#DDD8F5' }} />
-              <span style={{ fontSize: '0.73rem', color: '#9B90C4' }}>of</span>
-              <div style={{ flex: 1, height: 1, background: '#DDD8F5' }} />
-            </div>
+                  {/* Wachtwoord */}
+                  <div className="bj-field" style={{ marginBottom: '1.1rem', position: 'relative' }}>
+                    <label style={{ display: 'block', fontSize: '0.73rem', fontWeight: 600, color: '#6B6490', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                      Wachtwoord
+                    </label>
+                    <span style={{ position: 'absolute', left: '0.9rem', top: '2.4rem', color: '#BDB8D8', fontSize: 15, pointerEvents: 'none' }}>🔒</span>
+                    <input
+                      type="password"
+                      placeholder="Minimaal 8 tekens"
+                      value={wachtwoord}
+                      onChange={(e) => setWachtwoord(e.target.value)}
+                      required
+                    />
+                  </div>
 
-            <button className="bj-btn-google">
-              <span style={{ fontSize: 16 }}>G</span>
-              Doorgaan met Google
-            </button>
+                  {/* Naam */}
+                  <div className="bj-field" style={{ marginBottom: '1.1rem', position: 'relative' }}>
+                    <label style={{ display: 'block', fontSize: '0.73rem', fontWeight: 600, color: '#6B6490', marginBottom: '0.35rem', letterSpacing: '0.04em', textTransform: 'uppercase' }}>
+                      Naam{' '}
+                      <span style={{ fontWeight: 400, textTransform: 'none', fontSize: '0.72rem', color: '#BDB8D8' }}>(optioneel)</span>
+                    </label>
+                    <span style={{ position: 'absolute', left: '0.9rem', top: '2.4rem', color: '#BDB8D8', fontSize: 15, pointerEvents: 'none' }}>👤</span>
+                    <input
+                      type="text"
+                      placeholder="Hoe mogen we je noemen?"
+                      value={naam}
+                      onChange={(e) => setNaam(e.target.value)}
+                    />
+                  </div>
 
-            <p style={{ fontSize: '0.72rem', color: '#9B90C4', textAlign: 'center', marginTop: '1.25rem', lineHeight: 1.6 }}>
-              Door te registreren ga je akkoord met onze{' '}
-              <Link href="#" style={{ color: '#7F77DD', textDecoration: 'none' }}>Voorwaarden</Link>
-              {' '}en{' '}
-              <Link href="#" style={{ color: '#7F77DD', textDecoration: 'none' }}>Privacybeleid</Link>.
-            </p>
+                  {fout && (
+                    <p style={{ fontSize: '0.82rem', color: '#A32D2D', background: '#FCEBEB', border: '1px solid #F09595', borderRadius: 10, padding: '0.6rem 0.9rem', marginBottom: '1rem' }}>
+                      {fout}
+                    </p>
+                  )}
+
+                  <button type="submit" className="bj-btn-submit" disabled={laden}>
+                    {laden ? 'Even geduld...' : 'Account aanmaken →'}
+                  </button>
+
+                </form>
+
+                {/* Divider */}
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', margin: '1.25rem 0' }}>
+                  <div style={{ flex: 1, height: 1, background: '#DDD8F5' }} />
+                  <span style={{ fontSize: '0.73rem', color: '#9B90C4' }}>of</span>
+                  <div style={{ flex: 1, height: 1, background: '#DDD8F5' }} />
+                </div>
+
+                <button className="bj-btn-google">
+                  <span style={{ fontSize: 16 }}>G</span>
+                  Doorgaan met Google
+                </button>
+
+                <p style={{ fontSize: '0.72rem', color: '#9B90C4', textAlign: 'center', marginTop: '1.25rem', lineHeight: 1.6 }}>
+                  Door te registreren ga je akkoord met onze{' '}
+                  <Link href="#" style={{ color: '#7F77DD', textDecoration: 'none' }}>Voorwaarden</Link>
+                  {' '}en{' '}
+                  <Link href="#" style={{ color: '#7F77DD', textDecoration: 'none' }}>Privacybeleid</Link>.
+                </p>
+              </>
+            )}
 
           </div>
         </div>
