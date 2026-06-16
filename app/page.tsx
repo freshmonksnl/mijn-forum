@@ -14,7 +14,7 @@ export default function Home() {
     async function haalGebruikerOp() {
       const { data } = await supabase.auth.getUser()
       if (data.user) {
-        setEmail(data.user.email)
+        setEmail(data.user.email ?? '')
       }
     }
     haalGebruikerOp()
