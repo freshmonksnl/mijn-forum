@@ -6,7 +6,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 
 export default function Home() {
-  const [gebruiker, setGebruiker] = useState(false)
+  const [email, setEmail] = useState('')
   const supabase = createClient()
   const router = useRouter()
 
@@ -14,9 +14,7 @@ export default function Home() {
     async function haalGebruikerOp() {
       const { data } = await supabase.auth.getUser()
       if (data.user) {
-        setGebruiker(data.user)
-      } else {
-        setGebruiker(false)
+        setEmail(data.user.email)
       }
     }
     haalGebruikerOp()
@@ -24,7 +22,7 @@ export default function Home() {
 
   async function handleUitloggen() {
     await supabase.auth.signOut()
-    setGebruiker(false)
+    setEmail('')
     router.refresh()
   }
 
@@ -33,10 +31,10 @@ export default function Home() {
       <div className="w-full max-w-md text-center">
         <h1 className="text-4xl font-bold mb-4">Welkom op mijn forum</h1>
 
-        {gebruiker ? (
+        {email ? (
           <div className="flex flex-col gap-4">
             <p className="text-gray-600">
-              Ingelogd als <span className="font-medium">{gebruiker.email}</span>
+              Ingelogd als <span className="font-medium">{email}</span>
             </p>
             <button
               onClick={handleUitloggen}
