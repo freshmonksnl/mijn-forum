@@ -214,7 +214,7 @@ export default function Dashboard() {
                 </span>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
                   <Link href={`/lijstje/${lijstje.id}`} className="bj-btn-bewerk" style={{ textDecoration: 'none' }}>Bewerken</Link>
-                  <button className="bj-btn-deel">Delen</button>
+                  <button className="bj-btn-deel" onClick={() => { navigator.clipboard.writeText(`${window.location.origin}/lijstje/${lijstje.id}`); alert('Link gekopieerd!') }}>Delen</button>
                   <button className="bj-btn-verwijder" onClick={() => handleVerwijder(lijstje.id)} title="Verwijderen">✕</button>
                 </div>
               </div>
