@@ -5,7 +5,7 @@ import { createClient } from '@/utils/supabase'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
 
-export default function LijstjePagina({ params }) {
+export default function LijstjePagina({ params: paramsPromise }) {
   const [lijstje, setLijstje] = useState(null)
   const [items, setItems] = useState([])
   const [laden, setLaden] = useState(true)
@@ -20,6 +20,9 @@ export default function LijstjePagina({ params }) {
 
   useEffect(() => {
     async function laadData() {
+      const params = await paramsPromise
+      const id = params.id
+
       const { data: { user } } = await supabase.auth.getUser()
       if (!user) { router.push('/inloggen'); return }
       setGebruiker(user)
@@ -27,7 +30,7 @@ export default function LijstjePagina({ params }) {
       const { data: lijstjeData } = await supabase
         .from('lijstjes')
         .select('*')
-        .eq('id', params.id)
+        .eq('id', id)
         .single()
 
       if (!lijstjeData) { router.push('/dashboard'); return }
@@ -36,7 +39,7 @@ export default function LijstjePagina({ params }) {
       const { data: itemsData } = await supabase
         .from('items')
         .select('*')
-        .eq('lijstje_id', params.id)
+        .eq('lijstje_id', id)
         .order('aangemaakt_op', { ascending: true })
 
       setItems(itemsData || [])
@@ -55,7 +58,7 @@ export default function LijstjePagina({ params }) {
     const { data, error } = await supabase
       .from('items')
       .insert([{
-        lijstje_id: params.id,
+        lijstje_id: lijstje.id,
         user_id: gebruiker.id,
         naam,
         link: linkOpgemaakt || null,
