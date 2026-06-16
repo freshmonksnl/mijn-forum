@@ -94,11 +94,11 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1400&q=80"
           alt="Blij kind op verjaardag"
-          style={{ width: '100%', height: 520, objectFit: 'cover', objectPosition: 'center 20%', display: 'block', filter: 'brightness(0.55)' }}
+          style={{ width: '100%', height: 420, objectFit: 'cover', objectPosition: 'center 20%', display: 'block', filter: 'brightness(0.55)' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(30,15,70,0.45) 0%, rgba(30,15,70,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '0 2.5rem' }}>
-          <div style={{ maxWidth: 780, margin: '0 auto', width: '100%', display: 'flex', alignItems: 'center', gap: '3rem' }}>
+          <div style={{ maxWidth: 780, margin: '0 auto', width: '100%', display: 'flex', alignItems: 'center', gap: '2rem' }}>
 
             {/* Tekst */}
             <div style={{ flex: 1 }}>
@@ -109,7 +109,7 @@ export default function Home() {
                 Jouw verjaardag,{' '}
                 <span style={{ color: '#E8A020' }}>jouw cadeau's</span>
               </h1>
-              <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: '1.75rem', maxWidth: 380 }}>
+              <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: '1.25rem', maxWidth: 380 }}>
                 Maak een verlanglijstje en deel het met wie jij wil. Zij zien wat er nog te pakken is — jij wordt gewoon verrast.
               </p>
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
@@ -124,7 +124,7 @@ export default function Home() {
 
             {/* Voorbeeld kaart */}
             <div style={{ flexShrink: 0, width: 215, background: '#fff', borderRadius: 20, padding: '1rem' }}>
-              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.85rem' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '0.6rem' }}>
                 <span style={{ fontSize: '0.78rem', fontWeight: 600, color: '#2D2060' }}>🎁 Lisa, 14 april</span>
                 <span style={{ fontSize: '0.62rem', fontWeight: 600, background: '#FFF4DC', color: '#B87A10', padding: '2px 8px', borderRadius: 99 }}>3 over</span>
               </div>
@@ -156,10 +156,10 @@ export default function Home() {
       </svg>
 
       {/* ZO WERKT HET */}
-      <section style={{ background: '#fff', padding: '4rem 2.5rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
+      <section style={{ background: '#fff', padding: '2.5rem 2rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <p style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#E8A020', marginBottom: '0.6rem' }}>Zo werkt het</p>
-          <p style={{ fontSize: '1.55rem', fontWeight: 700, color: '#2D2060', marginBottom: '2.25rem' }}>In drie stappen klaar</p>
+          <p style={{ fontSize: '1.3rem', fontWeight: 700, color: '#2D2060', marginBottom: '1.25rem' }}>In drie stappen klaar</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(190px, 1fr))', gap: 16 }}>
             {[
               { num: '1', titel: 'Maak een lijstje', desc: 'Voeg items toe met naam, prijs en een link naar de webshop.' },
@@ -167,7 +167,7 @@ export default function Home() {
               { num: '3', titel: 'Word verrast', desc: 'Zij vinken af wat ze kopen — jij ziet het pas als je het cadeau krijgt.' },
             ].map((stap, i) => (
               <div key={i} className="bj-step">
-                <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#2D2060', color: '#fff', fontSize: '0.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.9rem' }}>
+                <div style={{ width: 34, height: 34, borderRadius: '50%', background: '#2D2060', color: '#fff', fontSize: '0.82rem', fontWeight: 700, display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '0.6rem' }}>
                   {stap.num}
                 </div>
                 <div style={{ fontSize: '0.88rem', fontWeight: 600, color: '#2D2060', marginBottom: '0.35rem' }}>{stap.titel}</div>
@@ -184,10 +184,10 @@ export default function Home() {
       </svg>
 
       {/* STATISTIEKEN */}
-      <section style={{ background: '#F4F2FF', padding: '4rem 2.5rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
+      <section style={{ background: '#F4F2FF', padding: '2.5rem 2rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <p style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#E8A020', marginBottom: '0.6rem' }}>In goede handen</p>
-          <p style={{ fontSize: '1.55rem', fontWeight: 700, color: '#2D2060', marginBottom: '2.25rem' }}>Al veel Nederlanders gingen je voor</p>
+          <p style={{ fontSize: '1.3rem', fontWeight: 700, color: '#2D2060', marginBottom: '1.25rem' }}>Al veel Nederlanders gingen je voor</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: 16 }}>
             {[
               { num: '12.400', label: 'Lijstjes aangemaakt' },
@@ -195,7 +195,7 @@ export default function Home() {
               { num: 'Gratis', label: 'Altijd en voor iedereen' },
             ].map((stat, i) => (
               <div key={i} className="bj-stat">
-                <div style={{ fontSize: '1.9rem', fontWeight: 700, color: '#2D2060', marginBottom: '0.2rem' }}>{stat.num}</div>
+                <div style={{ fontSize: '1.6rem', fontWeight: 700, color: '#2D2060', marginBottom: '0.2rem' }}>{stat.num}</div>
                 <div style={{ fontSize: '0.78rem', color: '#6B6490' }}>{stat.label}</div>
               </div>
             ))}
@@ -209,10 +209,10 @@ export default function Home() {
       </svg>
 
       {/* VEELGESTELDE VRAGEN */}
-      <section style={{ background: '#fff', padding: '4rem 2.5rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
+      <section style={{ background: '#fff', padding: '2.5rem 2rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
           <p style={{ fontSize: '0.7rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#E8A020', marginBottom: '0.6rem' }}>Veelgestelde vragen</p>
-          <p style={{ fontSize: '1.55rem', fontWeight: 700, color: '#2D2060', marginBottom: '2rem' }}>Alles wat je wil weten</p>
+          <p style={{ fontSize: '1.3rem', fontWeight: 700, color: '#2D2060', marginBottom: '1.25rem' }}>Alles wat je wil weten</p>
           {[
             { v: 'Is Bijnajarig gratis?', a: 'Ja, volledig gratis. Je hebt alleen een account nodig om een lijstje aan te maken.' },
             { v: 'Zie ik wie wat heeft gekocht?', a: 'Nee — dat is juist de verrassing. Je ziet pas wat je krijgt als je het cadeau uitpakt.' },
@@ -228,13 +228,13 @@ export default function Home() {
       </section>
 
       {/* FOOTER */}
-      <footer style={{ background: '#2D2060', padding: '3rem 2.5rem 2rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
+      <footer style={{ background: '#2D2060', padding: '2rem 2rem 1.5rem', fontFamily: "'Poppins', system-ui, sans-serif" }}>
         <div style={{ maxWidth: 720, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '2rem', marginBottom: '2.5rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(140px, 1fr))', gap: '1.5rem', marginBottom: '1.5rem' }}>
 
             {/* Kolom 1: Logo + tagline */}
             <div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.75rem' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 8, fontSize: '1rem', fontWeight: 700, color: '#fff', marginBottom: '0.5rem' }}>
                 <div style={{ width: 28, height: 28, background: 'rgba(255,255,255,0.15)', borderRadius: 99, display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: 13 }}>🎂</div>
                 Bijnajarig
               </div>
