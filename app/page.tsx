@@ -94,22 +94,22 @@ export default function Home() {
         <img
           src="https://images.unsplash.com/photo-1530103862676-de8c9debad1d?w=1400&q=80"
           alt="Blij kind op verjaardag"
-          style={{ width: '100%', height: 420, objectFit: 'cover', objectPosition: 'center 20%', display: 'block', filter: 'brightness(0.55)' }}
+          style={{ width: '100%', height: 500, objectFit: 'cover', objectPosition: 'center 20%', display: 'block', filter: 'brightness(0.55)' }}
         />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to bottom, rgba(30,15,70,0.45) 0%, rgba(30,15,70,0.72) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '0 2.5rem' }}>
+        <div style={{ position: 'absolute', inset: 0, display: 'flex', alignItems: 'center', padding: '0 2.5rem', paddingTop: '3rem' }}>
           <div style={{ maxWidth: 780, margin: '0 auto', width: '100%', display: 'flex', alignItems: 'center', gap: '2rem' }}>
 
             {/* Tekst */}
             <div style={{ flex: 1 }}>
-              <p style={{ fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#E8A020', marginBottom: '1rem' }}>
+              <p style={{ fontSize: '0.72rem', fontWeight: 600, letterSpacing: '0.16em', textTransform: 'uppercase', color: '#E8A020', marginBottom: '1.25rem' }}>
                 Gratis · Simpel · Deelbaar
               </p>
-              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 700, lineHeight: 1.15, color: '#fff', marginBottom: '1rem' }}>
+              <h1 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.7rem)', fontWeight: 700, lineHeight: 1.15, color: '#fff', marginBottom: '1.5rem' }}>
                 Jouw verjaardag,{' '}
                 <span style={{ color: '#E8A020' }}>jouw cadeau's</span>
               </h1>
-              <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: '1.25rem', maxWidth: 380 }}>
+              <p style={{ fontSize: '0.95rem', color: 'rgba(255,255,255,0.8)', lineHeight: 1.75, marginBottom: '2rem', maxWidth: 380 }}>
                 Maak een verlanglijstje en deel het met wie jij wil. Zij zien wat er nog te pakken is — jij wordt gewoon verrast.
               </p>
               <div style={{ display: 'flex', gap: 10, flexWrap: 'wrap' }}>
