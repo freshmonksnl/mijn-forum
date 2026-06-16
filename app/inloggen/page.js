@@ -28,7 +28,7 @@ export default function Inloggen() {
     if (error) {
       setFout('E-mailadres of wachtwoord klopt niet. Probeer het opnieuw.')
     } else {
-      router.push('/')
+      router.push('/dashboard')
     }
   }
 
