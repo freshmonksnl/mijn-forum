@@ -213,7 +213,7 @@ export default function Dashboard() {
                   0 over
                 </span>
                 <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <button className="bj-btn-bewerk">Bewerken</button>
+                  <Link href={`/lijstje/${lijstje.id}`} className="bj-btn-bewerk" style={{ textDecoration: 'none' }}>Bewerken</Link>
                   <button className="bj-btn-deel">Delen</button>
                   <button className="bj-btn-verwijder" onClick={() => handleVerwijder(lijstje.id)} title="Verwijderen">✕</button>
                 </div>
